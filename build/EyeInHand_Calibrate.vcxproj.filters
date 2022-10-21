@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="E:\Github\Github-Cplusplus\EyeInHand_Calibrate\EyeInHand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\Github\Github-Cplusplus\EyeInHand_Calibrate\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\Github\Github-Cplusplus\EyeInHand_Calibrate\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{C6AC0787-2083-3E71-BD53-C253970B659B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

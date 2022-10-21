@@ -1,0 +1,382 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "E:/Github/Github-Cplusplus/EyeInHand_Calibrate/MinSizeRel/EyeInHand_Calibrate.exe"
+		},
+		{
+			"path" : "E:/Github/Github-Cplusplus/EyeInHand_Calibrate/MinSizeRel/EyeInHand_Calibrate.pdb"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"target_link_libraries",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 39,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 40,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 17,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 25,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /source-charset:utf-8 /execution-charset:gbk /MD /O1 /Ob1 /DNDEBUG"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 3,
+					"path" : "E:/Github/Github-Cplusplus/EyeInHand_Calibrate/./Eigen"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/Github/Github-Cplusplus/EyeInHand_Calibrate/./include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/Github/Github-Cplusplus/EyeInHand_Calibrate"
+				},
+				{
+					"backtrace" : 4,
+					"isSystem" : true,
+					"path" : "D:/OpenCV-4.5.0-withContribNonfree-VS2022-VScode/include"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0,
+				1
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "EyeInHand_Calibrate::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /source-charset:utf-8 /execution-charset:gbk /MD /O1 /Ob1 /DNDEBUG",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "/machine:x64 /INCREMENTAL:NO /subsystem:console",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_img_hash450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode\\x64\\vc16\\lib\\opencv_world450.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "EyeInHand_Calibrate",
+	"nameOnDisk" : "EyeInHand_Calibrate.exe",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "EyeInHand.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "main.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}
