@@ -1,3 +1,6 @@
+#ifndef _EYEINHAND_H_
+#define _EYEINHAND_H_
+
 #include "opencv2/opencv.hpp"
 
 /***
@@ -40,3 +43,5 @@ cv::Mat DOF6ZYX_ToTransformMatrix(double x, double y, double z, double euler_x, 
  * @return {*}
  */
 bool ReadTxt(std::string filepath, int col,std::vector<double> &data);
+
+#endif

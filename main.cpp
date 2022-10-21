@@ -2,8 +2,8 @@
 #include <fstream>
 #include <sstream>
 #include <string.h>
-#include "EyeInHand.h"
 #include <queue>
+#include "EyeInHand.h"
 
 int main(int, char **)
 {
