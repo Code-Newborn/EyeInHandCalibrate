@@ -7,62 +7,7 @@
 
 int main(int, char **)
 {
-    std::cout << "Hello, world!\n";
-
-    double a1[4][4] = {-0.9976, 0.0676, -0.0173, -146.8929,
-                       -0.0697, -0.9488, 0.3082, -43.6165,
-                       0.0044, 0.3087, 0.9512, 10.3295,
-                       0, 0, 0, 1};
-    double a2[4][4] = {0.0535, -0.7980, 0.6003, -165.7422,
-                       0.9483, 0.2289, 0.2197, 44.2528,
-                       -0.3127, 0.5575, 0.7690, 21.0485,
-                       0, 0, 0, 1};
-    double b1[4][4] = {-0.9975, 0.0711, -0.0029, -11.6622,
-                       -0.0663, -0.9443, -0.3223, 104.2345,
-                       -0.0257, -0.3213, 0.9466, 21.3907,
-                       0, 0, 0, 1};
-    double b2[4][4] = {0.0544, -0.7855, -0.6164, 177.7842,
-                       0.9515, 0.2280, -0.2067, 65.4536,
-                       0.3029, -0.5753, 0.7598, 84.5619,
-                       0, 0, 0, 1};
-    cv::Mat A1(4, 4, CV_64FC1, a1);
-    cv::Mat A2(4, 4, CV_64FC1, a2);
-    cv::Mat B1(4, 4, CV_64FC1, b1);
-    cv::Mat B2(4, 4, CV_64FC1, b2);
-    std::vector<cv::Mat> Hgij;
-    std::vector<cv::Mat> Hcij;
-    Hgij.push_back(A1);
-    Hgij.push_back(A2);
-    Hcij.push_back(B1);
-    Hcij.push_back(B2);
-    cv::Mat Hcg1(4, 4, CV_64FC1);
-    Tsai_HandEye(Hcg1, Hgij, Hcij);
-    // std::cout << Hcg1 << std::endl;
-
-    double _test1[4][4] = {1, 0, 0, 0,
-                           0, 0, -0, 10,
-                           -0, 0.8660254037844387, -0.4999999999999998, 20,
-                           0, 0, 0, 1};
-
-    double _test2[4][4] = {-0.4999999999999998, -0.8660254037844387, 0, 0,
-                           0.8660254037844387, 0.8660254037844387, -0, 0,
-                           -0, 0, 1, 0,
-                           0, 0, 0, 1};
-
-    cv::Mat test1(4, 4, CV_64FC1, _test1);
-    cv::Mat test2(4, 4, CV_64FC1, _test2);
-    cv::Mat test;
-
-    cv::Mat test1_inv;
-    cv::invert(test1, test1_inv);
-    std::cout << test1_inv << std::endl;
-    test = test1_inv * test2;
-
-    std::cout << test << std::endl;
-    std::cout << "==================== Split ====================" << std::endl;
-
-    std::vector<double>
-        data_b2g_x;
+    std::vector<double> data_b2g_x;
     std::vector<double> data_b2g_y;
     std::vector<double> data_b2g_z;
     std::vector<double> data_b2g_rx;
@@ -111,21 +56,9 @@ int main(int, char **)
         std::cout << "data in file is not align" << std::endl;
     }
 
-    for (int i = 0; i < T_A.size(); i++)
-    {
-        std::cout << T_A.at(i) << std::endl;
-    }
-    std::cout << "==================== Split ====================" << std::endl;
-    for (int i = 0; i < T_B.size(); i++)
-    {
-        std::cout << T_B.at(i) << std::endl;
-    }
-
     // 生成 AX = XB中的 A
-
     std::vector<cv::Mat> A;
     std::vector<cv::Mat> B;
-
     for (int i = 1; i < T_A.size(); i++)
     {
         cv::Mat temp_invA;
@@ -156,6 +89,31 @@ int main(int, char **)
     cv::Mat X_result(4, 4, CV_64FC1);
     Tsai_HandEye(X_result, A, B);
     std::cout << X_result << std::endl;
+
+    std::cout << "==================== Error ====================" << std::endl;
+
+    // 手眼标定结果
+    double _T_G2C[4][4] = {0.2049888678171762, -0.07546780275972509, -0.9758504879425185, -789.0921101103351,
+                           0.9763668686332763, -0.053974064078531, 0.209271446313388, 86.67447300617494,
+                           -0.0684638730008964, -0.9956864020129359, 0.06262017997619668, 114.8740101957056,
+                           0, 0, 0, 1};
+    cv::Mat T_G2C(4, 4, CV_64FC1, _T_G2C);
+    EyeInHand_ErrorEstimatation error;
+
+    if (ErrorCalculation_EyeInHand(A, T_G2C, B, error))
+    {
+        std::cout << "Sample Standard Deviation X :" << error.X_error_SampleStdDeviation << std::endl;
+        std::cout << "Sample Standard Deviation Y :" << error.Y_error_SampleStdDeviation << std::endl;
+        std::cout << "Sample Standard Deviation Z :" << error.Z_error_SampleStdDeviation << std::endl;
+        std::cout << "Sample Standard Deviation RX :" << error.RX_error_SampleStdDeviation << std::endl;
+        std::cout << "Sample Standard Deviation RY :" << error.RY_error_SampleStdDeviation << std::endl;
+        std::cout << "Sample Standard Deviation RZ :" << error.RZ_error_SampleStdDeviation << std::endl;
+    }
+
+    std::cout << " Translation Error :"
+              << sqrt(pow(error.X_error_SampleStdDeviation, 2) + pow(error.Y_error_SampleStdDeviation, 2) + pow(error.Z_error_SampleStdDeviation, 2))
+              << std::endl;
+    ;
 
     return 0;
 }

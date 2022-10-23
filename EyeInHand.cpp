@@ -1,9 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <Eigen/Core>
-#include <Eigen/Dense>
-#include <opencv2/opencv.hpp>
 #include "EyeInHand.h"
 
 void Tsai_HandEye(cv::Mat &Hcg, std::vector<cv::Mat> Hgij, std::vector<cv::Mat> Hcij)
@@ -158,6 +155,17 @@ cv::Mat DOF6ZYX_ToTransformMatrix(double x, double y, double z, double rx_deg, d
 	return TransformMatrix;
 }
 
+bool TransformMatrix_ToDOF6ZYX(cv::Mat TransformMatrix, double &x, double &y, double &z, double &rx_deg, double &ry_deg, double &rz_deg)
+{
+	x = TransformMatrix.at<double>(0, 3);
+	y = TransformMatrix.at<double>(1, 3);
+	z = TransformMatrix.at<double>(2, 3);
+	rx_deg = atan2(TransformMatrix.at<double>(2, 1), TransformMatrix.at<double>(2, 2)) * (180.0 / CV_PI);
+	ry_deg = atan2(-TransformMatrix.at<double>(2, 0), sqrt(1 - pow(TransformMatrix.at<double>(2, 0), 2))) * (180.0 / CV_PI);
+	rz_deg = atan2(TransformMatrix.at<double>(1, 0), TransformMatrix.at<double>(0, 0)) * (180.0 / CV_PI);
+	return true;
+}
+
 bool ReadTxt(std::string filepath, int col, std::vector<double> &data)
 {
 
@@ -203,4 +211,77 @@ bool ReadTxt(std::string filepath, int col, std::vector<double> &data)
 		}
 	}
 	return true;
+}
+
+bool ErrorCalculation_EyeInHand(std::vector<cv::Mat> A, cv::Mat T_G2C, std::vector<cv::Mat> B, EyeInHand_ErrorEstimatation &error)
+{
+
+	CV_Assert(A.size() == B.size()); // 判断输入数据的集合大小是否相等
+
+	for (int i = 0; i < A.size(); i++)
+	{
+		double rectify_x, rectify_y, rectify_z, rectify_rx, rectify_ry, rectify_rz;
+		double measure_x, measure_y, measure_z, measure_rx, measure_ry, measure_rz;
+		cv::Mat T_G2C_inv;
+		cv::invert(T_G2C, T_G2C_inv);
+		cv::Mat rectify_A = T_G2C * B[i] * T_G2C_inv;
+		TransformMatrix_ToDOF6ZYX(rectify_A, rectify_x, rectify_y, rectify_z, rectify_rx, rectify_ry, rectify_rz); // 校正数据 转欧拉角ZYX位姿数据
+		TransformMatrix_ToDOF6ZYX(A[i], measure_x, measure_y, measure_z, measure_rx, measure_ry, measure_rz);	   // 测量数据 转欧拉角ZYX位姿数据
+		error.X_error.push_back(measure_x - rectify_x);															   // 记录误差值
+		error.Y_error.push_back(measure_y - rectify_x);
+		error.Z_error.push_back(measure_z - rectify_x);
+		error.RX_error.push_back(measure_rx - rectify_rx);
+		error.RY_error.push_back(measure_ry - rectify_ry);
+		error.RZ_error.push_back(measure_rz - rectify_rz);
+	}
+
+	error.X_error_SampleStdDeviation = RootMeanSquare(error.X_error);
+	error.Y_error_SampleStdDeviation = RootMeanSquare(error.Y_error);
+	error.Z_error_SampleStdDeviation = RootMeanSquare(error.Z_error);
+	error.RX_error_SampleStdDeviation = RootMeanSquare(error.RX_error);
+	error.RY_error_SampleStdDeviation = RootMeanSquare(error.RY_error);
+	error.RZ_error_SampleStdDeviation = RootMeanSquare(error.RZ_error);
+
+	return true;
+}
+
+double SampleStdDeviation(std::vector<double> data)
+{
+	double sum = 0;
+	double average = 0;
+
+	double temp_sum = 0;
+	double sample_stdDeviation = 0;
+
+	int n = data.size();
+
+	for (auto iterator = data.begin(); iterator != data.end(); iterator++)
+	{
+		sum += *iterator;
+	}
+	average = sum / n;
+
+	for (auto iterator = data.begin(); iterator != data.end(); iterator++)
+	{
+		temp_sum += pow((*iterator - average), 2);
+	}
+	sample_stdDeviation = sqrt(temp_sum / (n - 1));
+
+	return sample_stdDeviation;
+}
+
+double RootMeanSquare(std::vector<double> data)
+{
+	double sum = 0;
+
+	double root_mean_square = 0;
+
+	int n = data.size();
+
+	for (auto iterator = data.begin(); iterator != data.end(); iterator++)
+	{
+		sum += pow(*iterator, 2);
+	}
+	root_mean_square = sqrt(sum / n);
+	return root_mean_square;
 }

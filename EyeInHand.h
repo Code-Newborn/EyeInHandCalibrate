@@ -1,7 +1,30 @@
 #ifndef _EYEINHAND_H_
 #define _EYEINHAND_H_
 
+#include <Eigen/Core>
+#include <Eigen/Dense>
 #include "opencv2/opencv.hpp"
+
+typedef struct
+{
+    // 误差记录
+    std::vector<double> X_error;
+    std::vector<double> Y_error;
+    std::vector<double> Z_error;
+    std::vector<double> RX_error;
+    std::vector<double> RY_error;
+    std::vector<double> RZ_error;
+
+    // 样本标准差
+    double X_error_SampleStdDeviation = 0;
+    double Y_error_SampleStdDeviation = 0;
+    double Z_error_SampleStdDeviation = 0;
+
+    // 样本方差
+    double RX_error_SampleStdDeviation = 0;
+    double RY_error_SampleStdDeviation = 0;
+    double RZ_error_SampleStdDeviation = 0;
+} EyeInHand_ErrorEstimatation;
 
 /***
  * @name: 反对称矩阵
@@ -21,7 +44,7 @@ cv::Mat skew(const cv::Mat A);
  */
 void Tsai_HandEye(cv::Mat &Hcg, std::vector<cv::Mat> Hgij, std::vector<cv::Mat> Hcij);
 
-/*** 
+/***
  * @name: 6自由度位姿数据转齐次矩阵
  * @msg: 欧拉角 ZYX 顺序
  * @param {double} x 平移量X
@@ -34,14 +57,21 @@ void Tsai_HandEye(cv::Mat &Hcg, std::vector<cv::Mat> Hgij, std::vector<cv::Mat> 
  */
 cv::Mat DOF6ZYX_ToTransformMatrix(double x, double y, double z, double euler_x, double euler_y, double euler_z);
 
-/*** 
+bool TransformMatrix_ToDOF6ZYX(cv::Mat TransformMatrix, double &x, double &y, double &z, double &rx_deg, double &ry_deg, double &rz_deg);
+
+/***
  * @name: 读取 txt 文件某列数据 以空格分隔
- * @msg: 
+ * @msg:
  * @param {string} filepath 文件路径
  * @param {int} col 读取的列索引，0开始
  * @param {vector<double>} &data 输出数据
  * @return {*}
  */
-bool ReadTxt(std::string filepath, int col,std::vector<double> &data);
+bool ReadTxt(std::string filepath, int col, std::vector<double> &data);
 
+bool ErrorCalculation_EyeInHand(std::vector<cv::Mat> T_B2Gs, cv::Mat T_G2C, std::vector<cv::Mat> T_C2Os, EyeInHand_ErrorEstimatation &error);
+
+double SampleStdDeviation(std::vector<double> data);
+
+double RootMeanSquare(std::vector<double> data);
 #endif
