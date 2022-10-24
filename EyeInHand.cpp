@@ -6,7 +6,7 @@
 void Tsai_HandEye(cv::Mat &Hcg, std::vector<cv::Mat> Hgij, std::vector<cv::Mat> Hcij)
 {
 	CV_Assert(Hgij.size() == Hcij.size()); // 判断输入数据的集合大小是否相等
-	int nStatus = (int)Hgij.size();		   //
+	int nStatus = (int)Hgij.size();
 
 	cv::Mat Rgij(3, 3, CV_64FC1);
 	cv::Mat Rcij(3, 3, CV_64FC1);
@@ -253,7 +253,7 @@ double SampleStdDeviation(std::vector<double> data)
 	double temp_sum = 0;
 	double sample_stdDeviation = 0;
 
-	int n = data.size();
+	int n = (int)data.size();
 
 	for (auto iterator = data.begin(); iterator != data.end(); iterator++)
 	{
@@ -276,7 +276,7 @@ double RootMeanSquare(std::vector<double> data)
 
 	double root_mean_square = 0;
 
-	int n = data.size();
+	int n = (int)data.size();
 
 	for (auto iterator = data.begin(); iterator != data.end(); iterator++)
 	{
